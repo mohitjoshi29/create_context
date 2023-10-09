@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState,createContext} from 'react'
+import LoginConfirmation from './LoginConfirmation';
+import LoginPanel from './LoginPanel';
 
-function App() {
+let Newcontext=createContext();
+
+export default function App() {
+  let [name,setName]= useState("mohit")
+  let [email,setEmail]=useState("m@gmail.com")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Newcontext.Provider value={name} val={email}>
+      <LoginConfirmation/>
+      <br/>
+      <br/>
+      <LoginPanel/>
+    </Newcontext.Provider>
+    </>
+  )
 }
 
-export default App;
+export {Newcontext}
